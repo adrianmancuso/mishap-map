@@ -12,13 +12,11 @@
     <div class="row">
       <div class="col m4 l3" id="aside">
         <h1>Current Hazards</h1>
-        <ul>
-          <li>Number 1</li>
-          <li>number 2</li>
-          <li>Number 3</li>
-          <li>Number 4</li>
-          <li>Number 5</li>
-        </ul>
+
+        <script id="hazard_list" type="template">
+            
+        </script>
+
       </div>
       <div class="col s12 m8 l9" id="main">
         <h1>main</h1>
@@ -27,6 +25,7 @@
     
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAR98_Bksq2kC5OSo6isWu-RKHvF5GIg4&callback=initMap"
     type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.10/handlebars.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <script src="./scripts/gmaps.js"></script>
