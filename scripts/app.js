@@ -1,13 +1,13 @@
 var $main = $('main');
 var $aside = $('aside');
 
-var initMap = function() {
+function initMap() {
   new GMaps({
     div: '#main',
     mapType: 'roadMap',
     lat: -37.8136,
     lng: 144.9631
-  })
+  });
 }
 
 
