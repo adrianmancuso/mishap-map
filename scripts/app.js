@@ -10,42 +10,35 @@ var initMap = function() {
   })
 }
 
-// var invocation = new XMLHttpRequest();
-// var url = "https://victraffic-api.wd.com.au/api/3v/incidents/";
 
-// function callOtherDomain() {
-//   if(invocation) {
-//     invocation.open('GET', url, true);
-//     invocation.onreadystatechange = handler;
-//     invocation.send();
-//   }
-// }
-
-// $.getJSON("https://victraffic-api.wd.com.au/api/3v/incidents.json?callback=?", function(response){
-//   console.log(response);
-// });
-
-var fetchData = function() {
-
-  var script = document.createElement('script');
-  script.src = "https://victraffic-api.wd.com.au/api/3v/incidents";
-  document.querySelector('head').appendChild(script);
-
-
-  var settings = {
-    url: "https://victraffic-api.wd.com.au/api/3v/incidents",
-    type: 'GET',
-    dataType: 'json',
-    contentType: 'json'
+function createCorsRequest(method, url) {
+ 
+  var xhr = new XMLHttpRequest();
+ 
+  if ("withCredentials" in xhr) {
+    xhr.open(method, url, true);
+  } else if (typeof XDomainRequest != "undefined") {
+    xhr = new XDomainRequest();
+    xhr.open(method, url);
+  } else {
+    xhr = null;
   }
-
-  $.ajax(settings).done(function(returnedData) {
-    console.log(returnedData.response);
-  });
-
+  return xhr;
 }
 
-// // $aside.on('click', function(event) {
-// //   event.preventDefault();
-// //   fetchData();
-// // });
+function makeCorsRequest() {
+ 
+  var url = 'http://victraffic-api.wd.com.au/api/v3/incidents';
+  var xhr = createCorsRequest('GET', url);
+
+  xhr.onload = function() {
+    var response = JSON.parse(xhr.response);
+    var allIncidents = response.incidents;
+
+    allIncidents.forEach(function(incident) {
+      console.log(incident);
+    });
+  };
+
+  xhr.send();
+}
