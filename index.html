@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/skeleton.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Accident Zone</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col m4 l3" id="aside">
+        <h1>Current Hazards</h1>
+        <ul>
+          <li>Number 1</li>
+          <li>number 2</li>
+          <li>Number 3</li>
+          <li>Number 4</li>
+          <li>Number 5</li>
+        </ul>
+      </div>
+      <div class="col s12 m8 l9" id="main">
+        <h1>main</h1>
+      </div>
+    </div>
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAR98_Bksq2kC5OSo6isWu-RKHvF5GIg4&callback=initMap"
+    type="text/javascript"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="./scripts/gmaps.js"></script>
+    <script src="./scripts/app.js"></script>
+  </body>
+</html>

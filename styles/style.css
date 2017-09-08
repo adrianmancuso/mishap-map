@@ -1,0 +1,11 @@
+#aside {
+  background-color: #FF9C94;
+  color: white;
+  border-right: 0.3em solid #B24C44;
+  height: 100vh;
+}
+
+#main {
+  color: #38CCB7;
+  height: 100vh;
+}
