@@ -34,11 +34,9 @@ var fetchData = function() {
 
   var settings = {
     url: "https://victraffic-api.wd.com.au/api/3v/incidents",
-    crossDomain: true,
     type: 'GET',
     dataType: 'json',
-    contentType: 'json',
-    header: "Access-Control-Allow-Origin"
+    contentType: 'json'
   }
 
   $.ajax(settings).done(function(returnedData) {
