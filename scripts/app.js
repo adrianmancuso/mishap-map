@@ -1,11 +1,6 @@
-var $main = $('main');
-var $aside = $('aside');
 var allIncidents = [];
 var vicMap = {};
-
-// $(document).ready(function() {
-//   $('.modal').modal();
-// });
+var onScreenMarkers = [];
 
 function initMap() {
   createMap();
@@ -16,35 +11,66 @@ function createMap() {
   vicMap = new GMaps({
     div: '#main',
     mapType: 'roadMap',
+    zoom: 13,
     lat: -37.8136,
-    lng: 144.9631
+    lng: 144.9631,
+    bounds_changed: function(event) {
+      findOnscreenMarkers();
+      $(".card-panel").remove();
+      onScreenMarkers.forEach(function(marker) {
+        populateAside(marker);
+      });
+    },
+    dragend: function(event) {
+      findOnscreenMarkers();
+      $(".card-panel").remove();
+      onScreenMarkers.forEach(function(marker) {
+        populateAside(marker);
+      });
+    }
   });
 }
 
 function dropMarkers() {
   allIncidents.forEach(function(incident) {
-    vicMap.addMarker({
-      lat: incident.lat,
-      lng: incident.long,
-      title: incident.incident_type,
-      click: function(event) {
-        $('#modal_alert').text(incident.alert_type);
-        $('#modal_title').text(incident.title);
-        $('#modal_description').text(incident.description);
-        $('#modal1').modal();
-        $('#modal1').modal('open');
-      }
-    });
+    if (incident.lat !== null && incident.long !== null) {
+      vicMap.addMarker({
+        lat: incident.lat,
+        lng: incident.long,
+        title: incident.incident_type,
+        details: {
+          alert: "Alert: " + incident.alert_type,
+          title: incident.title
+        },
+        click: function(event) {
+          $('#modal_alert').text(incident.alert_type);
+          $('#modal_title').text(incident.title);
+          $('#modal_description').text(incident.description);
+          $('#modal1').modal();
+          $('#modal1').modal('open');
+        }
+      });
+    }
   });
 }
 
-function populateAside() {
-  // var source = $("#hazard_list_template").html();
-  // var template = Handlebars.compile(source);
-  // var result = {description: incident.description};
-  // var html = template(result);
-  // console.log(html);
-  // $aside.append(html);
+function findOnscreenMarkers() {
+  markers = vicMap.markers;
+  onScreenMarkers = markers.filter(checkInBounds);
+}
+
+function checkInBounds(marker) {
+  if (vicMap.getBounds().contains(marker.getPosition())) {
+    return marker;
+  }
+}
+
+function populateAside(incident) {
+  var source = $("#hazard_list_template").html();
+  var template = Handlebars.compile(source);
+  var result = {title: incident.details.title, alert: incident.details.alert};
+  var html = template(result);
+  $("#aside").append(html);
 }
 
 function createCorsRequest(method, url) {

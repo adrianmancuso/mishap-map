@@ -1,7 +1,10 @@
+* {
+  font-family: 'Raleway', serif;
+}
+
 #aside {
-  background-color: #262626;
-  color: lightsalmon;
-  border-right: 0.08em solid white;
+  background-color: #c8e6c9;
+  color: #262626;
   overflow: auto;
   height: 100vh;
 }
@@ -12,12 +15,17 @@
 
 .modal {
   background-color: #262626;
-  color: lightsalmon;
+  color: #c8e6c9;
   border: 0.08em solid white;
 }
 
 .modal p {
   font-style: italic;
+}
+
+.card-panel {
+  background-color: lightsalmon;
+  color: #262626;
 }
 
 h2 {

@@ -6,16 +6,14 @@
     <link rel="stylesheet" href="./styles/skeleton.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="./styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <title>Accident Zone</title>
   </head>
   <body>
     <div class="row">
       <div class="col m4 l3" id="aside">
         <h1>Current Hazards</h1>      
-        <h1>victoria pde</h1>      
-        <h1>soaidjas</h1>      
-        <h1>Current oijsad</h1>      
-        <h1>asoijdasoidj77s</h1>      
+    
       </div>
 
       <div id="modal1" class="modal bottom-sheet">
@@ -31,8 +29,9 @@
       </div>
     </div>
     <script id="hazard_list_template" type="template">
-      <div class="incident">
-        <h3>{{description}}</h3>
+      <div class="card-panel green lighten-2 incident">
+        <h4 class="white-text">{{title}}</h4>
+        <span class="white-text">{{alert}}</span>
       </div>
     </script>
     
