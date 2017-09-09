@@ -54,7 +54,7 @@ function createCorsRequest(method, url) {
 }
 
 function makeCorsRequest() {
-  var url = 'https://victraffic-api.wd.com.au/api/v3/incidents';
+  var url = 'https://cors-anywhere.herokuapp.com/https://victraffic-api.wd.com.au/api/v3/incidents';
   var xhr = createCorsRequest('GET', url);
 
   xhr.onload = function() {
