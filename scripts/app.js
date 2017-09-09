@@ -3,6 +3,10 @@ var $aside = $('aside');
 var allIncidents = [];
 var vicMap = {};
 
+// $(document).ready(function() {
+//   $('.modal').modal();
+// });
+
 function initMap() {
   createMap();
   makeCorsRequest();
@@ -22,9 +26,13 @@ function dropMarkers() {
     vicMap.addMarker({
       lat: incident.lat,
       lng: incident.long,
-      title: incident.description,
+      title: incident.incident_type,
       click: function(event) {
-        console.log(incident);
+        $('#modal_alert').text(incident.alert_type);
+        $('#modal_title').text(incident.title);
+        $('#modal_description').text(incident.description);
+        $('#modal1').modal();
+        $('#modal1').modal('open');
       }
     });
   });

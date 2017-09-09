@@ -1,12 +1,25 @@
 #aside {
-  background-color: #FF9C94;
-  color: white;
-  border-right: 0.2em solid white;
+  background-color: #262626;
+  color: lightsalmon;
+  border-right: 0.08em solid white;
   overflow: auto;
-  height: 97vh;
+  height: 100vh;
 }
 
 #main {
-  color: #38CCB7;
-  height: 97vh;
+  height: 100vh;
+}
+
+.modal {
+  background-color: #262626;
+  color: lightsalmon;
+  border: 0.08em solid white;
+}
+
+.modal p {
+  font-style: italic;
+}
+
+h2 {
+  display: inline;
 }
