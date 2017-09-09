@@ -1,7 +1,7 @@
 #aside {
   background-color: #FF9C94;
   color: white;
-  border-right: 0.3em solid #B24C44;
+  border-right: 0.2em solid white;
   overflow: auto;
   height: 97vh;
 }

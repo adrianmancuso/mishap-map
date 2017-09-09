@@ -1,8 +1,15 @@
 var $main = $('main');
 var $aside = $('aside');
+var allIncidents = [];
+var vicMap = {};
 
 function initMap() {
-  new GMaps({
+  createMap();
+  makeCorsRequest();
+}
+
+function createMap() {
+  vicMap = new GMaps({
     div: '#main',
     mapType: 'roadMap',
     lat: -37.8136,
@@ -10,11 +17,31 @@ function initMap() {
   });
 }
 
+function dropMarkers() {
+  allIncidents.forEach(function(incident) {
+    vicMap.addMarker({
+      lat: incident.lat,
+      lng: incident.long,
+      title: incident.description,
+      click: function(event) {
+        console.log(incident);
+      }
+    });
+  });
+}
+
+function populateAside() {
+  // var source = $("#hazard_list_template").html();
+  // var template = Handlebars.compile(source);
+  // var result = {description: incident.description};
+  // var html = template(result);
+  // console.log(html);
+  // $aside.append(html);
+}
 
 function createCorsRequest(method, url) {
- 
   var xhr = new XMLHttpRequest();
- 
+
   if ("withCredentials" in xhr) {
     xhr.open(method, url, true);
   } else if (typeof XDomainRequest != "undefined") {
@@ -27,18 +54,13 @@ function createCorsRequest(method, url) {
 }
 
 function makeCorsRequest() {
- 
   var url = 'https://victraffic-api.wd.com.au/api/v3/incidents';
   var xhr = createCorsRequest('GET', url);
 
   xhr.onload = function() {
     var response = JSON.parse(xhr.response);
-    var allIncidents = response.incidents;
-
-    allIncidents.forEach(function(incident) {
-      console.log(incident);
-    });
+    allIncidents = response.incidents;
+    dropMarkers();
   };
-
   xhr.send();
 }
