@@ -2,16 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./styles/normalize.css">
-    <link rel="stylesheet" href="./styles/skeleton.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="./styles/style.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <title>Accident Zone</title>
   </head>
   <body>
-    <div class="row">
-      <div class="col m4 l3" id="aside">
+    <div>
+      <div id="aside">
         <h1>Current Hazards</h1>      
     
       </div>
@@ -25,12 +23,13 @@
         </div>
       </div>
 
-      <div class="col s12 m8 l9" id="main">
+      <div id="main">
+        <a class="show-on-small waves-effect waves-light btn-large"><i class="material-icons left">room</i>number of accidents</a>
       </div>
     </div>
     <script id="hazard_list_template" type="template">
-      <div class="card-panel green lighten-2 incident">
-        <h4 class="white-text">{{title}}</h4>
+      <div class="card-panel green lighten-2 incident hoverable">
+        <h5 class="white-text">{{title}}</h5>
         <span class="white-text">{{alert}}</span>
       </div>
     </script>

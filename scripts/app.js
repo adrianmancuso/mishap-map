@@ -11,7 +11,7 @@ function createMap() {
   vicMap = new GMaps({
     div: '#main',
     mapType: 'roadMap',
-    zoom: 13,
+    zoom: 16,
     lat: -37.8136,
     lng: 144.9631,
     bounds_changed: function(event) {
