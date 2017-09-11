@@ -39,7 +39,12 @@ body {
 
 .modal p {
   font-style: italic;
-  font-size: 3em;
+  font-size: 1em;
+}
+
+.modal h3 {
+  font-size: 1.5em;
+  font-style: bold;
 }
 
 .card-panel {
