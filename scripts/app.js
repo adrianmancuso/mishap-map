@@ -46,7 +46,7 @@ function dropMarkers() {
         lng: incident.long,
         animation: google.maps.Animation.DROP,
         icon: {
-          url: "http://maps.google.com/mapfiles/ms/micons/caution.png",
+          url: "https://maps.google.com/mapfiles/ms/micons/caution.png",
           Size: new google.maps.Size(80, 80)
         },
         title: incident.incident_type,
@@ -108,6 +108,9 @@ function makeCorsRequest() {
     allIncidents = response.incidents;
     dropMarkers();
     findOnscreenMarkers();
+    onScreenMarkers.forEach(function(marker) {
+        populateAside(marker);
+    });
     updateNumber();
   };
   xhr.send();
