@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
     <link rel="stylesheet" href="./styles/style.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
@@ -9,7 +10,7 @@
   </head>
   <body>
     <div>
-      <div id="aside">
+      <div class="aside">
         <h1>Current Hazards</h1>      
     
       </div>
@@ -23,8 +24,9 @@
         </div>
       </div>
 
+        <a class="waves-effect waves-light btn-large collapsible popout">Incidents (<span id="incident_number">0</span>)</a>
+
       <div id="main">
-        <a class="show-on-small waves-effect waves-light btn-large"><i class="material-icons left">room</i>number of accidents</a>
       </div>
     </div>
     <script id="hazard_list_template" type="template">

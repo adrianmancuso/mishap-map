@@ -11,12 +11,13 @@ function createMap() {
   vicMap = new GMaps({
     div: '#main',
     mapType: 'roadMap',
-    zoom: 16,
+    zoom: 15,
     lat: -37.8136,
     lng: 144.9631,
     bounds_changed: function(event) {
       findOnscreenMarkers();
       $(".card-panel").remove();
+      updateNumber();
       onScreenMarkers.forEach(function(marker) {
         populateAside(marker);
       });
@@ -24,11 +25,17 @@ function createMap() {
     dragend: function(event) {
       findOnscreenMarkers();
       $(".card-panel").remove();
+      updateNumber();
       onScreenMarkers.forEach(function(marker) {
         populateAside(marker);
       });
     }
   });
+}
+
+function updateNumber() {
+  var numberOfIncidents = onScreenMarkers.length.toString();
+  $("#incident_number").text(numberOfIncidents);
 }
 
 function dropMarkers() {
@@ -37,6 +44,11 @@ function dropMarkers() {
       vicMap.addMarker({
         lat: incident.lat,
         lng: incident.long,
+        animation: google.maps.Animation.DROP,
+        icon: {
+          url: "http://maps.google.com/mapfiles/ms/micons/caution.png",
+          Size: new google.maps.Size(80, 80)
+        },
         title: incident.incident_type,
         details: {
           alert: "Alert: " + incident.alert_type,
@@ -70,7 +82,7 @@ function populateAside(incident) {
   var template = Handlebars.compile(source);
   var result = {title: incident.details.title, alert: incident.details.alert};
   var html = template(result);
-  $("#aside").append(html);
+  $(".aside").append(html);
 }
 
 function createCorsRequest(method, url) {
@@ -95,6 +107,16 @@ function makeCorsRequest() {
     var response = JSON.parse(xhr.response);
     allIncidents = response.incidents;
     dropMarkers();
+    findOnscreenMarkers();
+    updateNumber();
   };
   xhr.send();
 }
+
+function showList() {
+  onScreenMarkers.forEach(function(marker){
+    Materialize.toast(marker.details.alert + " : " + marker.details.title, 3000, 'rounded');
+  });
+}
+
+$(".btn-large").click(showList);

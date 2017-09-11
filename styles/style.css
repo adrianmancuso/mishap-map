@@ -7,10 +7,15 @@ body {
 }
 
 .btn-large {
-  z-index: 9;
+  z-index: 99;
+  position: absolute;
+  top: 5em;
+  left: 1em;
+  display: none;
+  font-size: 1em;
 }
 
-#aside {
+.aside {
   background-color: #c8e6c9;
   color: #262626;
   overflow: auto;
@@ -34,6 +39,7 @@ body {
 
 .modal p {
   font-style: italic;
+  font-size: 3em;
 }
 
 .card-panel {
@@ -48,34 +54,41 @@ h2 {
 @media only screen 
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    #aside {
+    .aside {
       display: none;
     }
     #main {
       width: 100%;
+    }
+    .btn-large{
+      display: block;
     }
 }
 
 @media only screen 
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2) { 
-    #aside {
+    .aside {
       display: none;
     }
     #main {
       width: 100%;
     }
-
+    .btn-large{
+      display: block;
+    }
 }
 
 @media only screen 
   and (max-device-width: 736px) 
   and (-webkit-min-device-pixel-ratio: 3) { 
-    #aside {
+    .aside {
       display: none;
     }
     #main {
       width: 100%;
     }
-
+    .btn-large{
+      display: block;
+    }
 }
