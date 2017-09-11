@@ -85,6 +85,15 @@ function populateAside(incident) {
   $(".aside").append(html);
 }
 
+function buildUI() {
+    dropMarkers();
+    findOnscreenMarkers();
+    onScreenMarkers.forEach(function(marker) {
+        populateAside(marker);
+    });
+    updateNumber();
+}
+
 function createCorsRequest(method, url) {
   var xhr = new XMLHttpRequest();
 
@@ -106,12 +115,7 @@ function makeCorsRequest() {
   xhr.onload = function() {
     var response = JSON.parse(xhr.response);
     allIncidents = response.incidents;
-    dropMarkers();
-    findOnscreenMarkers();
-    onScreenMarkers.forEach(function(marker) {
-        populateAside(marker);
-    });
-    updateNumber();
+    buildUI();
   };
   xhr.send();
 }
