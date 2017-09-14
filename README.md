@@ -9,4 +9,4 @@ I opted to use Handlebars to render DOM elements as opposed to React as the info
 ## Installation
 As the application has no dependencies users should just be able to clone the repo if they wish to modify it.
 
-If you're curious to try it out it is also <a href="https://adrianmancuso.github.io/tic-tac-glow/">hosted on GitHub</a>.
+If you're curious to try it out it is also <a href="https://adrianmancuso.github.io/mishap-map/">hosted on GitHub</a>.
