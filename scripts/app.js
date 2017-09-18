@@ -1,10 +1,12 @@
 var allIncidents = [];
 var vicMap = {};
 var onScreenMarkers = [];
+var template = "";
 
 function initMap() {
   createMap();
   makeCorsRequest();
+  startHandlebars();
 }
 
 function createMap() {
@@ -77,9 +79,12 @@ function checkInBounds(marker) {
   }
 }
 
-function populateAside(incident) {
+function startHandlebars(){
   var source = $("#hazard_list_template").html();
-  var template = Handlebars.compile(source);
+  template = Handlebars.compile(source);
+}
+
+function populateAside(incident) {
   var result = {title: incident.details.title, alert: incident.details.alert};
   var html = template(result);
   $(".aside").append(html);
